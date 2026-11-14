@@ -1,8 +1,8 @@
 {
-  "name": "placeholderguard-web-starter",
+  "name": "renderguard-web-starter",
   "version": "0.1.0",
   "private": true,
-  "description": "A lightweight PlaceholderGuard download page and AI asset studio",
+  "description": "A lightweight RenderGuard download page and AI asset studio",
   "type": "module",
   "scripts": {
     "start": "node server.js",

@@ -18,7 +18,7 @@ async function checkBackend() {
   try {
     const r = await fetch('/api/health', { cache: 'no-store' });
     const data = await r.json();
-    $('apiStatus').textContent = data.geminiConfigured ? 'Gemini API configured' : 'Gemini key not configured';
+    $('apiStatus').textContent = data.geminiConfigured ? 'API configured' : 'API key not configured';
     $('apiStatus').className = `tag ${data.geminiConfigured ? '' : 'muted-tag'}`;
   } catch {
     $('apiStatus').textContent = 'Backend unavailable';
@@ -92,7 +92,7 @@ function showTextureMode() {
   const ai = $('textureMode').value === 'ai';
   $('proceduralTextureControls').classList.toggle('hidden', ai);
   $('aiTextureControls').classList.toggle('hidden', !ai);
-  setStatus('textureStatus', ai ? 'Gemini image generation needs a configured server-side API key.' : 'Procedural textures are generated locally.');
+  setStatus('textureStatus', ai ? 'Image generation needs a configured server-side API key.' : 'Procedural textures are generated locally.');
 }
 $('textureMode').addEventListener('change', showTextureMode);
 $('renderTexture').addEventListener('click', drawTexture);
@@ -119,7 +119,7 @@ $('generateAITexture').addEventListener('click', async () => {
 $('downloadTexture').addEventListener('click', () => {
   textureCanvas.toBlob(blob => {
     if (!blob) return setStatus('textureStatus', 'Could not export this canvas.', 'error');
-    downloadBlob(blob, 'placeholderguard-texture.png');
+    downloadBlob(blob, 'RenderGuard-texture.png');
   }, 'image/png');
 });
 
@@ -206,7 +206,7 @@ $('synthesizeSound').addEventListener('click', async () => {
   const blob = writeWav(currentSamples); await previewAudio(blob);
   setStatus('audioStatus', `Generated local ${preset === 'custom' ? $('waveType').value : preset} sound (${(currentSamples.length / 44100).toFixed(2)} s).`, 'success');
 });
-$('downloadAudio').addEventListener('click', () => { if (lastAudioBlob) downloadBlob(lastAudioBlob, 'placeholderguard-audio.wav'); });
+$('downloadAudio').addEventListener('click', () => { if (lastAudioBlob) downloadBlob(lastAudioBlob, 'RenderGuard-audio.wav'); });
 function showAudioMode() {
   const tts = $('audioMode').value === 'tts';
   $('synthControls').classList.toggle('hidden', tts); $('ttsControls').classList.toggle('hidden', !tts);
@@ -311,7 +311,7 @@ $('exportOBJ').addEventListener('click', () => {
   if (!THREE.OBJExporter) return setStatus('meshStatus', 'OBJ exporter did not load. Check your internet connection and reload.', 'error');
   const exporter = new THREE.OBJExporter();
   const output = exporter.parse(meshGroup);
-  downloadBlob(new Blob([output], { type: 'text/plain' }), 'placeholderguard-prop.obj');
+  downloadBlob(new Blob([output], { type: 'text/plain' }), 'RenderGuard-prop.obj');
   setStatus('meshStatus', 'OBJ exported. Materials are not embedded; export an MTL/material separately in a later workflow.', 'success');
 });
 window.addEventListener('resize', resizeMeshRenderer);

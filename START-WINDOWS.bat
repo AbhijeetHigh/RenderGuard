@@ -1,11 +1,11 @@
 @echo off
 setlocal EnableExtensions
 cd /d "%~dp0"
-title PlaceholderGuard Website Launcher
+title RenderGuard Website Launcher
 
 echo.
 echo ==============================================
-echo   PlaceholderGuard Website + AI Asset Studio
+echo   RenderGuard Website + AI Asset Studio
 echo ==============================================
 echo.
 
@@ -44,17 +44,22 @@ if not exist "public\index.html" (
   pause
   exit /b 1
 )
-if not exist "downloads\PlaceholderGuard-0.2.0.zip" (
-  echo [ERROR] The bundled PlaceholderGuard manager ZIP is missing.
+if not exist "downloads\RenderGuard-0.2.0.zip" (
+  echo [ERROR] The bundled RenderGuard manager ZIP is missing.
   echo Re-extract the complete website ZIP.
   pause
   exit /b 1
 )
 
 if not exist ".env" (
-  copy ".env.example" ".env" >nul
+  (
+    echo # Keep this key on the server. Never put it in public/index.html or public/app.js.
+    echo GEMINI_API_KEY=error
+    echo PORT=3000
+    echo HOST=127.0.0.1
+  ) > ".env"
   if errorlevel 1 (
-    echo [ERROR] Could not create .env from .env.example.
+    echo [ERROR] Could not create .env.
     pause
     exit /b 1
   )
@@ -63,21 +68,21 @@ if not exist ".env" (
 
 echo [OK] Node.js %NODE_VERSION% found.
 echo [INFO] Starting the local server in a separate terminal...
-start "PlaceholderGuard Server" /D "%~dp0" cmd /k node server.js
+start "RenderGuard Server" /D "%~dp0" cmd /k node server.js
 
 echo [INFO] Waiting for the server to become ready...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$url='http://127.0.0.1:3000/api/health'; $deadline=(Get-Date).AddSeconds(30); do { try { $r=Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 2; if ($r.StatusCode -eq 200) { Start-Process 'http://127.0.0.1:3000'; Write-Host '[OK] PlaceholderGuard is open in your browser.'; exit 0 } } catch { }; Start-Sleep -Milliseconds 500 } while ((Get-Date) -lt $deadline); Write-Host '[ERROR] The server did not become ready within 30 seconds.'; Write-Host 'Check the separate PlaceholderGuard Server terminal for the exact error.'; exit 1"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$url='http://127.0.0.1:3000/api/health'; $deadline=(Get-Date).AddSeconds(30); do { try { $r=Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 2; if ($r.StatusCode -eq 200) { Start-Process 'http://127.0.0.1:3000'; Write-Host '[OK] RenderGuard is open in your browser.'; exit 0 } } catch { }; Start-Sleep -Milliseconds 500 } while ((Get-Date) -lt $deadline); Write-Host '[ERROR] The server did not become ready within 30 seconds.'; Write-Host 'Check the separate RenderGuard Server terminal for the exact error.'; exit 1"
 if errorlevel 1 (
   echo.
   echo The website could not be started automatically.
-  echo Check the separate PlaceholderGuard Server terminal for details.
+  echo Check the separate RenderGuard Server terminal for details.
   pause
   exit /b 1
 )
 
 echo.
 echo Website: http://127.0.0.1:3000
-echo Keep the PlaceholderGuard Server terminal open while using the website.
+echo Keep the RenderGuard Server terminal open while using the website.
 echo Close that server terminal to stop the website.
 timeout /t 5 >nul
 exit /b 0

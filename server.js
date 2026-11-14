@@ -327,7 +327,7 @@ const server = http.createServer(async (req, res) => {
 server.on('error', (error) => {
   if (error.code === 'EADDRINUSE') {
     console.error(`\n[STARTUP ERROR] Port ${PORT} is already in use.`);
-    console.error('Close the other app or older PlaceholderGuard server using this port, then try again.');
+    console.error('Close the other app or older RenderGuard server using this port, then try again.');
   } else if (error.code === 'EACCES') {
     console.error(`\n[STARTUP ERROR] Permission denied while binding to ${HOST}:${PORT}.`);
   } else {
@@ -337,6 +337,6 @@ server.on('error', (error) => {
 });
 
 server.listen(PORT, HOST, () => {
-  console.log(`PlaceholderGuard web server running at http://${HOST}:${PORT}`);
+  console.log(`RenderGuard web server running at http://${HOST}:${PORT}`);
   console.log(`Gemini API key: ${API_KEY && !API_KEY.includes('PASTE_YOUR_') ? 'configured' : 'not configured (procedural tools still work)'}`);
 });

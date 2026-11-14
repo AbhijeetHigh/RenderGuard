@@ -1,11 +1,11 @@
-# PlaceholderGuard — Unity Manager & AI Asset Studio
+# RenderGuard — Unity Manager & AI Asset Studio
 
-> **Project overview · Current build: PlaceholderGuard 0.2.0 · Planned manager release: 0.2.1**
+> **Project overview · Current build: RenderGuard 0.2.0 · Planned manager release: 0.2.1**
 
-PlaceholderGuard is a Unity development companion with two connected parts:
+RenderGuard is a Unity development companion with two connected parts:
 
-1. **PlaceholderGuard Unity Manager** — a Unity Editor package for identifying, tracking, reviewing, and replacing temporary project content.
-2. **PlaceholderGuard Web / AI Asset Studio** — a companion website where users can download the Unity manager and access procedural and AI-assisted asset tools.
+1. **RenderGuard Unity Manager** — a Unity Editor package for identifying, tracking, reviewing, and replacing temporary project content.
+2. **RenderGuard Web / AI Asset Studio** — a companion website where users can download the Unity manager and access procedural and AI-assisted asset tools.
 
 The website and Unity package are separate applications. The website does not replace the Unity Editor manager, and the manager's core features work locally inside Unity.
 
@@ -33,7 +33,7 @@ Asset creation can be fragmented too. A developer may manage placeholders in Uni
 
 # 2. Proposed solution
 
-PlaceholderGuard brings placeholder management and asset-creation access together through a Unity package and a companion website.
+RenderGuard brings placeholder management and asset-creation access together through a Unity package and a companion website.
 
 ## 2.1 Unity Manager
 
@@ -53,7 +53,7 @@ The Unity Manager provides an Editor workflow to:
 
 The website provides a central place to:
 
-- Download the PlaceholderGuard Unity package.
+- Download the RenderGuard Unity package.
 - Generate procedural textures.
 - Request AI-generated textures.
 - Create procedural audio and AI-generated speech.
@@ -62,17 +62,17 @@ The website provides a central place to:
 
 ## 2.3 Unified goal
 
-The long-term goal is to make PlaceholderGuard a convenient companion for Unity creators: manage temporary content inside Unity, access asset-generation tools through the website, and learn how to use the manager without searching through disconnected documentation.
+The long-term goal is to make RenderGuard a convenient companion for Unity creators: manage temporary content inside Unity, access asset-generation tools through the website, and learn how to use the manager without searching through disconnected documentation.
 
 ---
 
-# 3. Current build — PlaceholderGuard 0.2.0
+# 3. Current build — RenderGuard 0.2.0
 
 **This section describes the current baseline. The current Unity Manager version is 0.2.0.** Version 0.2.1 is a future manager build and its additional capabilities are listed in Section 4. Do not treat 0.2.1 features as part of the current 0.2.0 release.
 
 ## 3.1 Unity Manager 0.2.0
 
-PlaceholderGuard 0.2.0 is an early source-code release for Unity 2021.3 or newer. It provides a local Editor workflow for tracking temporary content.
+RenderGuard 0.2.0 is an early source-code release for Unity 2021.3 or newer. It provides a local Editor workflow for tracking temporary content.
 
 ### 0.2.0 feature summary
 
@@ -94,7 +94,7 @@ PlaceholderGuard 0.2.0 is an early source-code release for Unity 2021.3 or newer
 
 1. A developer adds a `PlaceholderTag` component to a GameObject that contains temporary content.
 2. The developer runs a project scan.
-3. PlaceholderGuard registers explicitly tagged objects and separately lists heuristic matches as suggestions.
+3. RenderGuard registers explicitly tagged objects and separately lists heuristic matches as suggestions.
 4. The developer reviews suggestions and decides whether to approve or dismiss each one.
 5. The developer can link a candidate replacement asset and verify that it exists and is compatible.
 6. For supported scene-authored GameObjects, the developer can confirm and apply a prefab replacement.
@@ -104,7 +104,7 @@ PlaceholderGuard 0.2.0 is an early source-code release for Unity 2021.3 or newer
 
 ### Manager dashboard in 0.2.0
 
-The dashboard is opened from **Tools → PlaceholderGuard → Open Dashboard**.
+The dashboard is opened from **Tools → RenderGuard → Open Dashboard**.
 
 The 0.2.0 dashboard provides:
 
@@ -139,7 +139,7 @@ The supplied website starter is a companion application. Its README documents th
 
 | Area | Current documented capability |
 |---|---|
-| Manager download | Bundles a PlaceholderGuard 0.2.0 ZIP download |
+| Manager download | Bundles a RenderGuard 0.2.0 ZIP download |
 | Procedural textures | Generates checkerboard, grid, fractal-noise, and gradient PNGs in the browser |
 | AI textures | Uses a server-side Gemini image-generation endpoint with prompts framed for flat game textures |
 | Procedural audio | Local waveform synthesis with four presets, preview, and WAV export |
@@ -168,11 +168,11 @@ The Gemini API key is read by the server and must never be sent to browser JavaS
 
 # 4. Features to add — future of the current build
 
-This section describes the planned future direction. It includes the manager improvements prepared for **PlaceholderGuard 0.2.1**, plus planned website and platform improvements. These are not part of the current 0.2.0 baseline unless explicitly stated.
+This section describes the planned future direction. It includes the manager improvements prepared for **RenderGuard 0.2.1**, plus planned website and platform improvements. These are not part of the current 0.2.0 baseline unless explicitly stated.
 
 ## 4.1 Future Unity Manager — version 0.2.1
 
-PlaceholderGuard 0.2.1 is the next planned manager build. We plan to add improvements to detection, scanning, reporting, registry handling, and build validation.
+RenderGuard 0.2.1 is the next planned manager build. We plan to add improvements to detection, scanning, reporting, registry handling, and build validation.
 
 ### Planned / prepared 0.2.1 manager improvements
 
@@ -258,11 +258,11 @@ Planned improvements:
 
 ## 4.5 Manager documentation inside the website UI
 
-Add a dedicated **PlaceholderGuard Documentation** section directly to the website.
+Add a dedicated **RenderGuard Documentation** section directly to the website.
 
 Planned documentation:
 
-- What PlaceholderGuard does.
+- What RenderGuard does.
 - Installation and first-time setup.
 - How to add and configure `PlaceholderTag`.
 - How to scan a project.
@@ -331,7 +331,7 @@ The actual implementation should follow the dependencies present in the project.
 The following is a target structure for future modular development. It is not a claim that every listed file already exists.
 
 ```text
-PlaceholderGuard-Web/
+RenderGuard-Web/
 │
 ├── server.js
 ├── package.json
@@ -358,7 +358,7 @@ PlaceholderGuard-Web/
 │   └── utils/
 │
 ├── downloads/
-│   └── PlaceholderGuard-0.2.0.zip
+│   └── RenderGuard-0.2.0.zip
 │
 └── generated/
     ├── textures/
@@ -423,14 +423,14 @@ Typical installation:
 
 1. Back up the Unity project.
 2. Extract the manager ZIP.
-3. Locate the inner `PlaceholderGuard` folder.
+3. Locate the inner `RenderGuard` folder.
 4. Copy it into the Unity project's `Packages` directory.
-5. Confirm that `package.json` is directly inside `Packages/PlaceholderGuard/`.
+5. Confirm that `package.json` is directly inside `Packages/RenderGuard/`.
 6. Reopen Unity and wait for compilation.
-7. Open **Tools → PlaceholderGuard → Open Dashboard**.
+7. Open **Tools → RenderGuard → Open Dashboard**.
 8. Test in a disposable Unity project and inspect the Unity Console before using it in a production project.
 
-The current website download is documented as PlaceholderGuard 0.2.0. Do not label the website download as 0.2.1 until the bundled ZIP has actually been replaced and verified.
+The current website download is documented as RenderGuard 0.2.0. Do not label the website download as 0.2.1 until the bundled ZIP has actually been replaced and verified.
 
 ---
 
@@ -439,7 +439,7 @@ The current website download is documented as PlaceholderGuard 0.2.0. Do not lab
 A sensible order for the project is:
 
 1. **Stabilize the current 0.2.0 baseline.** Verify the website starts, the manager ZIP downloads, and the Unity package compiles in the target editor.
-2. **Prepare PlaceholderGuard 0.2.1.** Review its changes, preserve required `.meta` GUIDs during upgrade, compile it in Unity, and run its EditMode tests.
+2. **Prepare RenderGuard 0.2.1.** Review its changes, preserve required `.meta` GUIDs during upgrade, compile it in Unity, and run its EditMode tests.
 3. **Update the website manager download deliberately.** Only after 0.2.1 is tested should the website download and version label be changed.
 4. **Improve website UI and navigation.** Keep Manager Downloads and AI Asset Studio clearly separated.
 5. **Add manager documentation inside the website UI.** Keep it version-aware and searchable.
@@ -466,7 +466,7 @@ A sensible order for the project is:
 
 # 12. Project objective
 
-The long-term objective is to make PlaceholderGuard a useful development companion for Unity creators:
+The long-term objective is to make RenderGuard a useful development companion for Unity creators:
 
 - **Identify and track** temporary content inside Unity.
 - **Review and replace** placeholders through a controlled workflow.
@@ -475,7 +475,7 @@ The long-term objective is to make PlaceholderGuard a useful development compani
 - **Learn and troubleshoot** through documentation integrated into the website.
 - **Access the manager and asset tools** through one clearer experience.
 
-PlaceholderGuard should remain transparent and safe to use: suggestions must not be confused with confirmed issues, replacements must not silently modify scenes, and AI-generated results must be clearly identified with their actual capabilities and limitations.
+RenderGuard should remain transparent and safe to use: suggestions must not be confused with confirmed issues, replacements must not silently modify scenes, and AI-generated results must be clearly identified with their actual capabilities and limitations.
 
 ---
 
@@ -483,8 +483,8 @@ PlaceholderGuard should remain transparent and safe to use: suggestions must not
 
 This README is based on the supplied documents:
 
-- **Website starter README** — current website functionality, Gemini integration, local setup, and the bundled PlaceholderGuard 0.2.0 download.
-- **PlaceholderGuard 0.2.0 README** — current manager features, workflow, dashboard, registry, scanning, replacement handling, analytics, reports, build validation, limitations, and tests.
-- **PlaceholderGuard 0.2.1 README** — future manager improvements, upgrade notes, registry migration, new scan/report behavior, and test coverage.
+- **Website starter README** — current website functionality, Gemini integration, local setup, and the bundled RenderGuard 0.2.0 download.
+- **RenderGuard 0.2.0 README** — current manager features, workflow, dashboard, registry, scanning, replacement handling, analytics, reports, build validation, limitations, and tests.
+- **RenderGuard 0.2.1 README** — future manager improvements, upgrade notes, registry migration, new scan/report behavior, and test coverage.
 
 **Versioning rule for this document:** 0.2.0 describes the current manager build. 0.2.1 describes future manager capabilities until it has been compiled, tested, and deliberately adopted as the website's downloadable release.

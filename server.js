@@ -166,7 +166,10 @@ async function handleApi(req, res, url) {
       contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
       generationConfig: {
         responseModalities: ['IMAGE'],
-        responseFormat: { image: { aspectRatio, imageSize: '1K' } },
+        imageConfig: {
+          aspectRatio: aspectRatio,
+          imageSize: '1K',
+         },
       },
     }, 'v1');
     const parts = result?.candidates?.[0]?.content?.parts || [];

@@ -101,7 +101,7 @@ $('generateAITexture').addEventListener('click', async () => {
   const prompt = $('texturePrompt').value.trim();
   if (!prompt) return setStatus('textureStatus', 'Enter a texture description first.', 'error');
   const button = $('generateAITexture'); button.disabled = true; button.textContent = 'Generating…';
-  setStatus('textureStatus', 'Sending the prompt to Gemini…');
+  setStatus('textureStatus', 'Sending the prompt');
   try {
     const data = await apiPost('/api/generate/image', { prompt, aspectRatio: $('textureAspect').value });
     const image = new Image();
@@ -114,7 +114,7 @@ $('generateAITexture').addEventListener('click', async () => {
     image.onerror = () => setStatus('textureStatus', 'The generated image could not be decoded.', 'error');
     image.src = `data:${data.mimeType};base64,${data.imageBase64}`;
   } catch (error) { setStatus('textureStatus', error.message, 'error'); }
-  finally { button.disabled = false; button.textContent = 'Generate with Gemini'; }
+  finally { button.disabled = false; button.textContent = 'Generating'; }
 });
 $('downloadTexture').addEventListener('click', () => {
   textureCanvas.toBlob(blob => {
@@ -210,14 +210,14 @@ $('downloadAudio').addEventListener('click', () => { if (lastAudioBlob) download
 function showAudioMode() {
   const tts = $('audioMode').value === 'tts';
   $('synthControls').classList.toggle('hidden', tts); $('ttsControls').classList.toggle('hidden', !tts);
-  setStatus('audioStatus', tts ? 'Gemini speech generation needs a configured server-side API key.' : 'Procedural SFX are generated locally.');
+  setStatus('audioStatus', tts ? 'Speech generation needs a configured server-side API key.' : 'Procedural SFX are generated locally.');
 }
 $('audioMode').addEventListener('change', showAudioMode);
 $('generateTTS').addEventListener('click', async () => {
   const text = $('ttsText').value.trim();
   if (!text) return setStatus('audioStatus', 'Enter a voice line first.', 'error');
   const button = $('generateTTS'); button.disabled = true; button.textContent = 'Generating…';
-  setStatus('audioStatus', 'Generating speech with Gemini…');
+  setStatus('audioStatus', 'Generating speech with ######…');
   try {
     const data = await apiPost('/api/generate/tts', { text, voice: $('ttsVoice').value, style: $('ttsStyle').value });
     const binary = atob(data.audioBase64), bytes = new Uint8Array(binary.length);
@@ -225,9 +225,9 @@ $('generateTTS').addEventListener('click', async () => {
     const blob = new Blob([bytes], { type: data.mimeType || 'audio/wav' });
     await previewAudio(blob);
     drawWaveform(new Float32Array(1000));
-    setStatus('audioStatus', 'Gemini speech is ready. Preview it above or export the WAV file.', 'success');
+    setStatus('audioStatus','speech is ready. Preview it above or export the WAV file.', 'success');
   } catch (error) { setStatus('audioStatus', error.message, 'error'); }
-  finally { button.disabled = false; button.textContent = 'Generate speech with Gemini'; }
+  finally { button.disabled = false; button.textContent = 'Generate speech with ######'; }
 });
 
 // Three.js preview and OBJ exporter.
@@ -298,12 +298,12 @@ $('generateMeshRecipe').addEventListener('click', async () => {
   const prompt = $('meshPrompt').value.trim();
   if (!prompt) return setStatus('meshStatus', 'Describe an ordinary game prop first.', 'error');
   const button = $('generateMeshRecipe'); button.disabled = true; button.textContent = 'Building recipe…';
-  setStatus('meshStatus', 'Asking Gemini for a supported primitive recipe…');
+  setStatus('meshStatus', 'Requesting supported primitive recipe…');
   try {
     const recipe = await apiPost('/api/generate/mesh-recipe', { prompt });
     initMeshPreview(); addRecipe(recipe);
   } catch (error) { setStatus('meshStatus', error.message, 'error'); }
-  finally { button.disabled = false; button.textContent = 'Create prop recipe with Gemini'; }
+  finally { button.disabled = false; button.textContent = 'Create prop recipe'; }
 });
 $('exportOBJ').addEventListener('click', () => {
   initMeshPreview();

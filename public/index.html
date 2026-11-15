@@ -34,7 +34,7 @@
         <div>
           <h3>Placeholder tracking and build protection</h3>
           <p>Mark temporary GameObjects, review possible placeholders, link and apply replacements where supported, inspect project readiness, export reports, and validate builds.</p>
-          <p class="muted">Unity 2021.3+ · MIT License · Runs locally in the Unity Editor</p>
+          <p class="muted">Unity 2021.3+ · Apache License 2.0 · Runs locally in the Unity Editor</p>
         </div>
         <a class="button primary" href="/downloads/RenderGuard-0.2.0.zip" download><span aria-hidden="true">↓</span> Download ZIP</a>
       </div>
@@ -43,7 +43,7 @@
 
     <section id="studio" class="section">
       <div class="section-heading"><div><p class="eyebrow">02 / GENERATION TOOLS</p><h2>Asset Studio</h2></div><span id="apiStatus" class="tag muted-tag">Checking backend…</span></div>
-      <p class="section-copy">Procedural tools work locally in your browser. Gemini-powered tools require a server-side API key configured in <code>.env</code>.</p>
+      <p class="section-copy">Procedural tools work locally in your browser. require(Gemini) a server-side API key configured in <code>.env</code>.</p>
       <div class="studio-tabs" role="tablist" aria-label="Asset generators">
         <button class="tab active" data-tab="textures" role="tab" aria-selected="true">Textures</button>
         <button class="tab" data-tab="audio" role="tab" aria-selected="false">Audio & SFX</button>
@@ -53,7 +53,7 @@
       <section id="panel-textures" class="tool-panel active" role="tabpanel">
         <div class="tool-controls">
           <h3>Texture generator</h3>
-          <label>Generation mode<select id="textureMode"><option value="procedural">Procedural (local)</option><option value="ai">Gemini AI image</option></select></label>
+          <label>Generation mode<select id="textureMode"><option value="procedural">Procedural (local)</option><option value="ai">AI image</option></select></label>
           <div id="proceduralTextureControls">
             <label>Pattern<select id="texturePattern"><option value="checkerboard">Checkerboard</option><option value="grid">Grid</option><option value="noise">Fractal noise</option><option value="gradient">Gradient</option></select></label>
             <div class="field-row"><label>Color 1<input id="textureColor1" type="color" value="#657f9b"></label><label>Color 2<input id="textureColor2" type="color" value="#202a35"></label></div>
@@ -63,7 +63,7 @@
           <div id="aiTextureControls" class="hidden">
             <label>Texture prompt<textarea id="texturePrompt" rows="4" placeholder="e.g. seamless stylized sandstone floor texture, warm tan stone blocks"></textarea></label>
             <label>Aspect ratio<select id="textureAspect"><option value="1:1">Square 1:1</option><option value="3:2">Landscape 3:2</option><option value="2:3">Portrait 2:3</option><option value="16:9">Wide 16:9</option><option value="9:16">Tall 9:16</option></select></label>
-            <button class="button primary full" id="generateAITexture">Generate with Gemini</button>
+            <button class="button primary full" id="generateAITexture">Generate through RenderGuard</button>
           </div>
           <button class="button secondary full" id="downloadTexture">Export PNG</button>
           <p class="hint" id="textureStatus" aria-live="polite">Procedural textures are generated locally.</p>
@@ -74,7 +74,7 @@
       <section id="panel-audio" class="tool-panel" role="tabpanel" hidden>
         <div class="tool-controls">
           <h3>Audio & SFX</h3>
-          <label>Audio mode<select id="audioMode"><option value="synth">Procedural SFX (local)</option><option value="tts">Gemini text-to-speech</option></select></label>
+          <label>Audio mode<select id="audioMode"><option value="synth">Procedural SFX (local)</option><option value="tts">text-to-speech</option></select></label>
           <div id="synthControls">
             <label>Preset<select id="soundPreset"><option value="custom">Custom tone</option><option value="coin">Coin pickup</option><option value="jump">Jump</option><option value="laser">Laser zap</option><option value="sparkle">Magic sparkle</option></select></label>
             <label>Waveform<select id="waveType"><option value="sine">Sine</option><option value="square">Square (8-bit)</option><option value="sawtooth">Sawtooth</option><option value="noise">White noise</option></select></label>
@@ -86,7 +86,7 @@
             <label>Voice line<textarea id="ttsText" rows="3" maxlength="2200" placeholder="e.g. Quest complete. New area unlocked."></textarea></label>
             <label>Voice<select id="ttsVoice"><option>Kore</option><option>Puck</option><option>Charon</option><option>Fenrir</option><option>Aoede</option><option>Zephyr</option><option>Leda</option><option>Orus</option></select></label>
             <label>Style direction<input id="ttsStyle" maxlength="240" value="Clear, natural game voice line; friendly and expressive."></label>
-            <button class="button primary full" id="generateTTS">Generate speech with Gemini</button>
+            <button class="button primary full" id="generateTTS">Generate speech through RenderGuard</button>
           </div>
           <audio id="audioPlayer" controls class="audio-player"></audio>
           <button class="button secondary full" id="downloadAudio" disabled>Export WAV</button>
@@ -103,7 +103,7 @@
           <button class="button primary full" id="createPrimitive">Create primitive</button>
           <hr>
           <label>AI-assisted prop prompt<textarea id="meshPrompt" rows="3" placeholder="e.g. a stylized wooden crate with metal corner plates"></textarea></label>
-          <button class="button secondary full" id="generateMeshRecipe">Create prop recipe with Gemini</button>
+          <button class="button secondary full" id="generateMeshRecipe">Create prop recipe through RenderGuard</button>
           <button class="button primary full" id="exportOBJ">Export OBJ</button>
           <p class="hint" id="meshStatus" aria-live="polite">The AI creates a recipe from supported shapes; Three.js builds the geometry.</p>
         </div>
@@ -123,7 +123,7 @@
       <p class="fine-print">Read <code>docs/RenderGuard-0.2.0-README.txt</code> for the manager's detailed installation and feature guide. Test the package in a disposable Unity project before using it in production.</p>
     </section>
   </main>
-  <footer><span>RenderGuard</span><span>Manager stays local · AI generation uses your configured Gemini API</span></footer>
+  <footer><span>RenderGuard</span><span>Manager stays local · AI generation uses your configured(Gemini) API</span></footer>
   <script src="/app.js"></script>
 </body>
 </html>

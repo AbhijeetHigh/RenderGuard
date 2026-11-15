@@ -141,11 +141,11 @@ The supplied website starter is a companion application. Its README documents th
 |---|---|
 | Manager download | Bundles a RenderGuard 0.2.0 ZIP download |
 | Procedural textures | Generates checkerboard, grid, fractal-noise, and gradient PNGs in the browser |
-| AI textures | Uses a server-side Gemini image-generation endpoint with prompts framed for flat game textures |
+| AI textures | Uses a server-side image-generation endpoint with prompts framed for flat game textures |
 | Procedural audio | Local waveform synthesis with four presets, preview, and WAV export |
-| AI speech | Gemini text-to-speech with voice and style selection, preview, and WAV export |
+| AI speech | text-to-speech with voice and style selection, preview, and WAV export |
 | 3D preview | Three.js primitive preview with orbit and zoom controls |
-| AI-assisted 3D | Gemini returns a constrained JSON recipe for supported primitive shapes |
+| AI-assisted 3D | Ai returns a constrained JSON recipe for supported primitive shapes |
 | 3D export | Three.js builds the recipe into a mesh and exports OBJ geometry |
 
 ### 3D generation boundary

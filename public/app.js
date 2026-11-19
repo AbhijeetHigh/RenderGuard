@@ -119,7 +119,7 @@ $('generateAITexture').addEventListener('click', async () => {
 $('downloadTexture').addEventListener('click', () => {
   textureCanvas.toBlob(blob => {
     if (!blob) return setStatus('textureStatus', 'Could not export this canvas.', 'error');
-    downloadBlob(blob, 'RenderGuard-texture.png');
+    downloadBlob(blob, 'Temp_RG(texture).png');
   }, 'image/png');
 });
 
@@ -206,7 +206,7 @@ $('synthesizeSound').addEventListener('click', async () => {
   const blob = writeWav(currentSamples); await previewAudio(blob);
   setStatus('audioStatus', `Generated local ${preset === 'custom' ? $('waveType').value : preset} sound (${(currentSamples.length / 44100).toFixed(2)} s).`, 'success');
 });
-$('downloadAudio').addEventListener('click', () => { if (lastAudioBlob) downloadBlob(lastAudioBlob, 'RenderGuard-audio.wav'); });
+$('downloadAudio').addEventListener('click', () => { if (lastAudioBlob) downloadBlob(lastAudioBlob, 'Temp_RG(audio).wav'); });
 function showAudioMode() {
   const tts = $('audioMode').value === 'tts';
   $('synthControls').classList.toggle('hidden', tts); $('ttsControls').classList.toggle('hidden', !tts);
@@ -217,7 +217,7 @@ $('generateTTS').addEventListener('click', async () => {
   const text = $('ttsText').value.trim();
   if (!text) return setStatus('audioStatus', 'Enter a voice line first.', 'error');
   const button = $('generateTTS'); button.disabled = true; button.textContent = 'Generating…';
-  setStatus('audioStatus', 'Generating speech with ######…');
+  setStatus('audioStatus', 'Generating speech through RenderGuard');
   try {
     const data = await apiPost('/api/generate/tts', { text, voice: $('ttsVoice').value, style: $('ttsStyle').value });
     const binary = atob(data.audioBase64), bytes = new Uint8Array(binary.length);
@@ -227,7 +227,7 @@ $('generateTTS').addEventListener('click', async () => {
     drawWaveform(new Float32Array(1000));
     setStatus('audioStatus','speech is ready. Preview it above or export the WAV file.', 'success');
   } catch (error) { setStatus('audioStatus', error.message, 'error'); }
-  finally { button.disabled = false; button.textContent = 'Generate speech with ######'; }
+  finally { button.disabled = false; button.textContent = 'Generate speech Through RenderGuard'; }
 });
 
 // Three.js preview and OBJ exporter.
@@ -311,7 +311,7 @@ $('exportOBJ').addEventListener('click', () => {
   if (!THREE.OBJExporter) return setStatus('meshStatus', 'OBJ exporter did not load. Check your internet connection and reload.', 'error');
   const exporter = new THREE.OBJExporter();
   const output = exporter.parse(meshGroup);
-  downloadBlob(new Blob([output], { type: 'text/plain' }), 'RenderGuard-prop.obj');
+  downloadBlob(new Blob([output], { type: 'text/plain' }), 'Temp_RG(prop).obj');
   setStatus('meshStatus', 'OBJ exported. Materials are not embedded; export an MTL/material separately in a later workflow.', 'success');
 });
 window.addEventListener('resize', resizeMeshRenderer);

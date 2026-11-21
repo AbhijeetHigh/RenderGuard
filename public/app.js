@@ -227,7 +227,7 @@ $('generateTTS').addEventListener('click', async () => {
     drawWaveform(new Float32Array(1000));
     setStatus('audioStatus','speech is ready. Preview it above or export the WAV file.', 'success');
   } catch (error) { setStatus('audioStatus', error.message, 'error'); }
-  finally { button.disabled = false; button.textContent = 'Generate speech Through RenderGuard'; }
+  finally { button.disabled = false; button.textContent = 'Generate speech through RenderGuard'; }
 });
 
 // Three.js preview and OBJ exporter.

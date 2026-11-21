@@ -139,7 +139,7 @@ async function handleApi(req, res, url) {
   if (req.method === 'GET' && url.pathname === '/api/health') {
     return sendJson(res, 200, {
       ok: true,
-      geminiConfigured: Boolean(API_KEY && !API_KEY.includes('PASTE_YOUR_')),
+      geminiConfigured: Boolean(API_KEY && !API_KEY.includes('PASTE_YOUR_API_KEY')),
       models: { image: IMAGE_MODEL, tts: TTS_MODEL, text: TEXT_MODEL },
     });
   }
